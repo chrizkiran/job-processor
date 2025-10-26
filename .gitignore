@@ -1,20 +1,36 @@
+# Rebar3 build artifacts
 .rebar3
 _build
 _checkouts
 _vendor
-.eunit
+.rebar
+
+# Erlang artifacts
 *.o
 *.beam
 *.plt
+ebin
+erl_crash.dump
+rebar3.crashdump
+.erlang.cookie
+
+# Test artifacts
+.eunit
+TEST-*.xml
+*.coverdata
+cover/
+
+# Logs
+log
+logs
+
+# Editor artifacts
 *.swp
 *.swo
-.erlang.cookie
-ebin
-log
-erl_crash.dump
-.rebar
-logs
+*~
 .idea
 *.iml
-rebar3.crashdump
-*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
