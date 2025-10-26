@@ -1,13 +1,17 @@
 {application, job_processor, [
-    {description, "An OTP application"},
+    {description, "Job Processor HTTP Service"},
     {vsn, "0.1.0"},
     {registered, []},
     {mod, {job_processor_app, []}},
     {applications, [
         kernel,
-        stdlib
+        stdlib,
+        jsx,
+        cowboy
     ]},
-    {env, []},
+    {env, [
+        {http_port, 8080}
+    ]},
     {modules, []},
     {licenses, ["Apache-2.0"]},
     {links, []}
