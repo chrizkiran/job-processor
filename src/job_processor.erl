@@ -119,12 +119,12 @@ resolve_dependencies(Tasks) ->
 -spec add_vertices_and_edges(digraph:graph(), [map()]) -> ok.
 add_vertices_and_edges(Graph, Tasks) ->
     %% Add all task names as vertices
-    [digraph:add_vertex(Graph, Name) || #{name := Name} <- Tasks],
+    _ = [digraph:add_vertex(Graph, Name) || #{name := Name} <- Tasks],
     
     %% Add edges: dependency -> task (dependency must come before task)
-    [digraph:add_edge(Graph, Dep, Name) 
-     || #{name := Name, requires := Requires} <- Tasks,
-        Dep <- Requires],
+    _ = [digraph:add_edge(Graph, Dep, Name) 
+         || #{name := Name, requires := Requires} <- Tasks,
+            Dep <- Requires],
     ok.
 
 %% @doc Order tasks according to topologically sorted names

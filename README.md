@@ -203,6 +203,52 @@ curl -X POST http://localhost:8080/process \
 }
 ```
 
+## Testing
+
+### Unit Tests (EUnit)
+
+Run comprehensive unit tests:
+
+```bash
+rebar3 eunit
+```
+
+Run tests with coverage:
+
+```bash
+rebar3 cover
+```
+
+### Integration Tests (Common Test)
+
+Run integration tests that test the full HTTP service:
+
+```bash
+rebar3 ct
+```
+
+### Static Analysis (Dialyzer)
+
+Build PLT (first time only):
+
+```bash
+rebar3 dialyzer --build_plt
+```
+
+Run static analysis:
+
+```bash
+rebar3 dialyzer
+```
+
+### All Tests and Analysis
+
+Run everything:
+
+```bash
+rebar3 do eunit, ct, dialyzer
+```
+
 ## Development
 
 ### Interactive Testing
@@ -224,6 +270,16 @@ job_processor_helper:pretty_print(job_processor:process_job(TestJson)).
 job_processor_helper:demo().
 ```
 
+### Development Tools
+
+The project includes several development tools configured in `rebar.config`:
+
+- **EUnit**: Unit testing framework
+- **Common Test**: Integration testing framework  
+- **Dialyzer**: Static analysis for type checking
+- **Coverage**: Code coverage reporting
+- **Meck**: Mocking library for tests
+
 ### Project Structure
 
 ```
@@ -234,6 +290,11 @@ src/
 ├── job_processor_sup.erl      % OTP supervisor
 ├── job_processor_app.erl      % OTP application
 └── job_processor.app.src      % Application specification
+
+test/
+├── job_processor_tests.erl         % EUnit tests for core logic
+├── job_processor_handler_tests.erl % EUnit tests for HTTP handler
+└── job_processor_SUITE.erl         % Common Test integration tests
 ```
 
 ## Algorithm
